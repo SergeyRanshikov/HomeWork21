@@ -1,6 +1,7 @@
 public class Slytherin extends Hogwarts{
     //    ученикам Слизерина присущи хитрость, решительность, амбициозность, находчивость и жажда власти
 //    Slytherin students are cunning, decisive, ambitious, resourceful and lust for power
+    private final String faculty = "Slytherin";
     private int cunning;
     private int decisive;
     private int ambitious;
@@ -55,8 +56,34 @@ public class Slytherin extends Hogwarts{
     public void setLustForPower(int lustForPower) {
         this.lustForPower = lustForPower;
     }
-    public void sumScoreStudentGryffindor(){
 
+
+    public String getFaculty() {
+        return faculty;
+    }
+    @Override
+    public String toString() {
+        return ("Faculty: " + this.getFaculty()
+                + ". " + super.toString()
+                + "Cunning: " + this.getCunning()
+                + "; Determination: " + this.getDecisive()
+                + "; Ambition: " + this.getAmbitious()
+                + "; Resourcefulness: " + this.getResourceful()
+                + "; Lust for power: " + this.getLustForPower()
+                + "\n");
     }
 
+    public String compareSlytherin(Slytherin match) {
+        if (this.sumScoreStudent() > match.sumScoreStudent())
+            return this.getName() + " студент, имеющий лучшие показатели на факультете " + this.getFaculty() + ", чем " + match.getName();
+        else if (match.sumScoreStudent() > this.sumScoreStudent())
+            return match.getName() + " студент, имеющий лучшие показатели на факультете " + this.getFaculty() + ", чем " + this.getName();
+        else
+            return this.getName() + " и " + match.getName() + " одинаковые по силе " + this.getFaculty() + " студенты";
+    }
+
+    private long sumScoreStudent() {
+        return this.getCunning() + this.getDecisive() + this.getAmbitious() + this.getResourceful() + this.getLustForPower();
+    }
 }
+

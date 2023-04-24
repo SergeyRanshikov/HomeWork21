@@ -34,12 +34,23 @@ public class Hogwarts {
     }
 
 
+
+
     @Override
     public String toString() {
-        return "Hogwarts{" +
-                "name='" + name + '\'' +
-                ", thePowerOfSorcery=" + thePowerOfSorcery +
-                ", apparition=" + apparition +
-                '}';
+        return ("Студент: "+this.getName()+"с силой колдовства: "+this.getThePowerOfSorcery()+"; трансгрессия: "+this.getApparition()+"\n");
     }
+    public String compareHogwarts(Hogwarts match) {
+        if (this.sumScoreStudent() > match.sumScoreStudent())
+            return this.getName() + " учится лучше, чем " + match.getName();
+        else if (match.sumScoreStudent() > this.sumScoreStudent())
+            return match.getName() + " учится лучше, чем " + this.getName();
+        else
+            return this.getName() + " и " + match.getName() + " равные по силе ученики";
+    }
+    private long sumScoreStudent() {
+        return this.getThePowerOfSorcery() + this.getApparition();
+    }
+
+
 }
